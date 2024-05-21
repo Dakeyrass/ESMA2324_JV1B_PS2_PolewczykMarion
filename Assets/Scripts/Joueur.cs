@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Joueur : MonoBehaviour
 {
     //STATS
-    public float vie;
     public float vitesse;
     public float force_saut;
+    public int vie;
+    public Sprite[] vies;
+    public Image UIvie;
 
     //COMPONENTS
     private Rigidbody2D rgbd;
@@ -34,7 +37,10 @@ public class Joueur : MonoBehaviour
         {
             sauter();
         }
+
+
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Sol")
@@ -42,10 +48,29 @@ public class Joueur : MonoBehaviour
             au_sol = true; 
         }
     }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Ennemi"))
+        {
+            vie -=1;
+            PerteVieUI();
+        }
+        Debug.Log(vie);
+    }
+
+    private void PerteVieUI()
+    {
+        UIvie.sprite = vies[vie];
+        //UIvie fait ref au GameObject entier, donc si on ne met pas .sprite unity va essayer 
+        //d'assigner un Sprite (vies[vie]) a une Image et il aime pas.
+    }
+
     private void sauter()
     {
         rgbd.velocity = new Vector2 (rgbd.velocity.x,force_saut);
         au_sol = false;
     }
+
 
 }
