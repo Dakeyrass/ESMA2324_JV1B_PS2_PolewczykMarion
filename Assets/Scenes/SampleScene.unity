@@ -318,7 +318,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -388,9 +388,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vie: 0
-  poids: 0
-  force: 0
-  vitesse: 5
+  vitesse: 10
+  force_saut: 10
 --- !u!1 &2143178314
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,8 +403,8 @@ GameObject:
   - component: {fileID: 2143178316}
   - component: {fileID: 2143178315}
   m_Layer: 0
-  m_Name: Ground
-  m_TagString: Untagged
+  m_Name: Sol
+  m_TagString: Sol
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
