@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Joueur : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class Joueur : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(this);
         rgbd = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
     }
@@ -37,7 +39,6 @@ public class Joueur : MonoBehaviour
         {
             sauter();
         }
-
 
     }
 
@@ -72,5 +73,9 @@ public class Joueur : MonoBehaviour
         au_sol = false;
     }
 
-
+    public void mort()
+    {
+        SceneManager.LoadSceneAsync(0);
+    }
 }
+
