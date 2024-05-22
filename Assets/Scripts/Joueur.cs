@@ -20,12 +20,17 @@ public class Joueur : MonoBehaviour
     //CONDITIONS
     private bool au_sol = true;
 
+    //pour SAFE ZONE
+    private Timer timer_barre;
+
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(this);
         rgbd = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
+
+        timer_barre = FindObjectOfType<Timer>();
     }
 
     // Update is called once per frame
@@ -58,6 +63,17 @@ public class Joueur : MonoBehaviour
             PerteVieUI();
         }
         Debug.Log(vie);
+        
+        if (other.CompareTag("Safe"))
+        {
+            timer_barre.StopTimer();
+        }
+
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        timer_barre.ActiveTimer();
     }
 
     private void PerteVieUI()

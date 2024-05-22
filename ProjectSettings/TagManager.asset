@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Sol
   - Ennemi
+  - Safe
   layers:
   - Default
   - TransparentFX
