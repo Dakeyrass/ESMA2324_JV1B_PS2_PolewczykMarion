@@ -23,6 +23,11 @@ public class Joueur : MonoBehaviour
     //pour SAFE ZONE
     private Timer timer_barre;
 
+    //pour SUIVRE la PLATEFORME
+    private Transform plateforme_actuelle;
+    private Vector3 derniere_plat_pos;
+    private bool est_dessus;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +36,7 @@ public class Joueur : MonoBehaviour
         col = GetComponent<Collider2D>();
 
         timer_barre = FindObjectOfType<Timer>();
+        est_dessus = false;
     }
 
     // Update is called once per frame
@@ -45,6 +51,15 @@ public class Joueur : MonoBehaviour
             sauter();
         }
 
+        //permet de savoir si le perso doit suivre une plateforme.
+        if (est_dessus && plateforme_actuelle != null)
+        {
+            Vector3 mouvement_plateforme = plateforme_actuelle.position - derniere_plat_pos;
+            //stock le deplacement plateforme = vecteur qui represente le deplacement de la plat depuis sa derniere pos.
+            transform.position += mouvement_plateforme;
+            derniere_plat_pos = plateforme_actuelle.position;
+        }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -52,6 +67,22 @@ public class Joueur : MonoBehaviour
         if(collision.gameObject.tag == "Sol")
         {
             au_sol = true; 
+        }
+        if(collision.gameObject.tag == "Plateforme")
+        {
+            plateforme_actuelle = collision.transform;
+            derniere_plat_pos = plateforme_actuelle.transform.position;
+            est_dessus = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Plateforme")
+        {   
+            //plateforme reassignee a null pour montrer que le joueur n'est plus dessus. 
+            plateforme_actuelle = null;
+            est_dessus = false;
         }
     }
     
