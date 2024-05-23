@@ -73,6 +73,7 @@ public class Joueur : MonoBehaviour
             plateforme_actuelle = collision.transform;
             derniere_plat_pos = plateforme_actuelle.transform.position;
             est_dessus = true;
+            au_sol = true;
         }
     }
 
