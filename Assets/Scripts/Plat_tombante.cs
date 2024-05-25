@@ -48,10 +48,14 @@ public class Plat_tombante : MonoBehaviour
         rgbd.isKinematic = true; 
         transform.position = pos_initiale; 
         transform.rotation = rota_initiale;
-         //on reinitialise la velocite du rgbd
-         
+        tombe = false;
+
+        //ERREURS QUAND UTILISE, CA FONCTIONNE SANS DONC TANT MIEUX (j'ai pas trouve d'autres solutions malheureusement)
+        //rgbd.angularVelocity = Vector3.zero;
+        //rgbd.velocity = Vector3.zero;
+        //on reinitialise la velocite du rgbd
         //angularVelocity decrit la vitesse a laquelle un objet tourne autour de son axe (si l'axe de rotation est aligne avec l'axe Y, etc):
         //on le reintialise pour eviter des rotations inatendues et d'eventuelles erreurs liees. 
-        tombe = false;
+        
     }
 }
