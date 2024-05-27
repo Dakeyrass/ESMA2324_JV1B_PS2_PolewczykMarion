@@ -8,6 +8,8 @@ TagManager:
   - Ennemi
   - Safe
   - Plateforme
+  - EnnemiVitesse
+  - InteractUI
   layers:
   - Default
   - TransparentFX
