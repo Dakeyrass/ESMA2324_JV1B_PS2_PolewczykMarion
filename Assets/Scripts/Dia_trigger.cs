@@ -10,7 +10,10 @@ public class Dia_trigger : MonoBehaviour
     public bool isInRange;
     //indique si le joueur est dans la zone du pnj 
     private Text interactUI;
-
+    void Start()
+    {
+        interactUI.enabled = false;
+    }
 
 
     // Update is called once per frame

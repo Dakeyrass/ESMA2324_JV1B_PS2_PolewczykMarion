@@ -60,6 +60,15 @@ public class Joueur : MonoBehaviour
             derniere_plat_pos = plateforme_actuelle.position;
         }
 
+        //FLIP
+        if (horizontal > 0)
+        {
+            transform.localScale = new Vector3(-0.12f, 0.17f,1f);
+        }
+        else if (horizontal < 0)
+        {
+            transform.localScale = new Vector3(0.12f,0.17f,1f);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -94,12 +103,21 @@ public class Joueur : MonoBehaviour
             vie -=1;
             PerteVieUI();
         }
-        Debug.Log(vie);
         
         if (other.CompareTag("Safe"))
         {
             timer_barre.StopTimer();
         }
+
+        if (other.CompareTag("EnnemiVitesse"))
+        {
+            vitesse -= 1;
+            if (vitesse <=0)
+            {
+                vitesse = 0;
+            }
+        }
+        Debug.Log(vitesse);
 
     }
 

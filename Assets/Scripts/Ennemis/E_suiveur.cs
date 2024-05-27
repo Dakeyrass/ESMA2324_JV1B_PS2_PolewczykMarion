@@ -5,6 +5,7 @@ using UnityEngine;
 public class E_suiveur : MonoBehaviour
 {
     public float distance_detection;
+    public float vie;
     public float vitesse;
     private Transform player;
     //pour avoir la position du joueur en x y z
@@ -36,6 +37,20 @@ public class E_suiveur : MonoBehaviour
             //on utilise time.deltatime pour que le deplacement soit independant du taux de rafraichissement.(ue le pc tourne a 120 fps ou 60, le deplacement sera le mm). 
             //le deplacement de l'objet devient alors proportionnel au temps ecoule depuis la derniere frame.(mouvement constant)
 
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Atk"))
+        {
+            vie -=1;
+            Debug.Log(vie);
+
+            if (vie<=0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
