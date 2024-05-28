@@ -12,14 +12,13 @@ public class Dia_trigger : MonoBehaviour
     private Text interactUI;
 
     private void Awake()//awake c'est quand �a passe d'actif � inactif. 
-    {
-        
-        interactUI = GameObject.FindGameObjectWithTag("InteractUI").GetComponent<Text>();
+    {   
+        interactUI = GameObject.Find("Interact").GetComponent<Text>();
     }
 
     void Start()
     {
-        interactUI.enabled = false;
+        
     }
 
     // Update is called once per frame
