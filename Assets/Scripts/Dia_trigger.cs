@@ -10,11 +10,17 @@ public class Dia_trigger : MonoBehaviour
     public bool isInRange;
     //indique si le joueur est dans la zone du pnj 
     private Text interactUI;
+
+    private void Awake()//awake c'est quand �a passe d'actif � inactif. 
+    {
+        
+        interactUI = GameObject.FindGameObjectWithTag("InteractUI").GetComponent<Text>();
+    }
+
     void Start()
     {
         interactUI.enabled = false;
     }
-
 
     // Update is called once per frame
     void Update()
@@ -46,10 +52,6 @@ public class Dia_trigger : MonoBehaviour
         }
     }
 
-    private void Awake()//awake c'est quand �a passe d'actif � inactif. 
-    {
-        interactUI = GameObject.FindGameObjectWithTag("InteractUI").GetComponent<Text>();
-    }
 
     void TriggerDialogue()
     {

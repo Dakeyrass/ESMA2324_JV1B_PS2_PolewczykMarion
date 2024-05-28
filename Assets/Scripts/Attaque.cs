@@ -6,10 +6,12 @@ public class Attaque : MonoBehaviour
 {
     public BoxCollider2D atk;
     private Animator anim;
+    private bool a_arme;
 
     // Start is called before the first frame update
     void Start()
     {
+        a_arme = false;
         anim = GetComponent <Animator>();
         atk.enabled = false;
     }
@@ -17,11 +19,21 @@ public class Attaque : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         //attaque
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.P) && a_arme)
         {
             Attack();
             Debug.Log("J'attaque");
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Arme"))
+        {
+            a_arme = true;
+            Destroy(other.gameObject);
         }
     }
 

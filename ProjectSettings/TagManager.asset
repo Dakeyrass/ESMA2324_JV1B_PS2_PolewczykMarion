@@ -11,6 +11,9 @@ TagManager:
   - EnnemiVitesse
   - InteractUI
   - Atk
+  - Arme
+  - Porte
+  - Collectible
   layers:
   - Default
   - TransparentFX
