@@ -11,6 +11,8 @@ public class E_suiveur : MonoBehaviour
     //pour avoir la position du joueur en x y z
     private Rigidbody2D rgbd;
 
+    public GameObject itemAdrop;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +51,8 @@ public class E_suiveur : MonoBehaviour
 
             if (vie<=0)
             {
-                Destroy(gameObject);
+                Instantiate(itemAdrop, transform.position, Quaternion.identity);
+                gameObject.SetActive(false);
             }
         }
     }
