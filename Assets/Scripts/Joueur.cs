@@ -14,6 +14,7 @@ public class Joueur : MonoBehaviour
     public Image UIvie;
 
     private bool invincible;
+    private Vector3 zone_respawn;
 
     //COMPONENTS
     private Rigidbody2D rgbd;
@@ -22,6 +23,7 @@ public class Joueur : MonoBehaviour
 
     //CONDITIONS
     private bool au_sol = true;
+    public GameObject timerobject;
 
     //pour SAFE ZONE
     private Timer timer_barre;
@@ -40,8 +42,13 @@ public class Joueur : MonoBehaviour
         anim = GetComponent<Animator>();
 
         timer_barre = FindObjectOfType<Timer>();
+        
+
+
         est_dessus = false;
-        invincible = false; 
+        invincible = false;
+        zone_respawn = transform.position;
+        //on enregistre le respawn dès que le joueur spawn comme ça si il meurt avant le checkpoint il respawn qd mm
     }
 
     // Update is called once per frame
@@ -113,7 +120,7 @@ public class Joueur : MonoBehaviour
 
             if(vie<=0)
             {
-                mort();
+                Respawn();
             }
             else
             {
@@ -165,6 +172,22 @@ public class Joueur : MonoBehaviour
     public void Iframe()
     {
         invincible = false; 
+    }
+
+    public void SetZoneRespawn(Vector3 nouv_z_respawn)
+    {
+        zone_respawn = nouv_z_respawn;
+    }
+
+    public void Respawn()
+    {
+        transform.position = zone_respawn;
+        //on tp le player et on reinitialise ses stats
+        vie = 3;
+        PerteVieUI();
+        
+        vitesse = 10;
+        timerobject.GetComponent<Timer>().Restart();
     }
 }
 

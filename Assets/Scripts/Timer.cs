@@ -44,4 +44,10 @@ public class Timer : MonoBehaviour
     {
         temps_passant = true;
     }
+
+    public void Restart()
+    {
+        temps_restant = temps_max;
+        timer_barre.fillAmount = 1;
+    }
 }
