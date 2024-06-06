@@ -24,6 +24,7 @@ public class Joueur : MonoBehaviour
     //CONDITIONS
     private bool au_sol = true;
     public GameObject timerobject;
+    private bool ne_saute_pas;
 
     //pour SAFE ZONE
     private Timer timer_barre;
@@ -42,9 +43,9 @@ public class Joueur : MonoBehaviour
         anim = GetComponent<Animator>();
 
         timer_barre = FindObjectOfType<Timer>();
-        
 
 
+        ne_saute_pas = true; 
         est_dessus = false;
         invincible = false;
         zone_respawn = transform.position;
@@ -57,6 +58,12 @@ public class Joueur : MonoBehaviour
         //deplacements basiques 
         float horizontal = Input.GetAxis("Horizontal");
         rgbd.velocity = new Vector2(horizontal * vitesse, rgbd.velocity.y);
+        if (ne_saute_pas == true)
+        {
+            anim.SetBool("cours", horizontal != 0);
+        }
+       
+
         //saut
         if (Input.GetKeyDown(KeyCode.Space)&& au_sol == true)
         {
@@ -82,14 +89,15 @@ public class Joueur : MonoBehaviour
             transform.localScale = new Vector3(1f,1f,1f);
         }
 
-        Debug.Log(invincible);
+        Debug.Log(au_sol);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Sol")
         {
-            au_sol = true; 
+            au_sol = true;
+            ne_saute_pas = true; 
         }
         if(collision.gameObject.tag == "Plateforme")
         {
@@ -139,10 +147,10 @@ public class Joueur : MonoBehaviour
             if (vitesse <=0)
             {
                 vitesse = 0;
+                Respawn();
             }
         }
-        Debug.Log(vitesse);
-
+        
 
     }
 
@@ -160,8 +168,10 @@ public class Joueur : MonoBehaviour
 
     private void sauter()
     {
+        anim.SetTrigger("saute");
         rgbd.velocity = new Vector2 (rgbd.velocity.x,force_saut);
         au_sol = false;
+        ne_saute_pas = false;
     }
 
     public void mort()

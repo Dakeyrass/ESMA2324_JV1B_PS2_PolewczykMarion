@@ -1752,7 +1752,7 @@ Transform:
   m_GameObject: {fileID: 967018693}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 53.49, y: -3.32, z: 0}
+  m_LocalPosition: {x: 53.45, y: -3.51, z: 0}
   m_LocalScale: {x: 0.456, y: 0.4654, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1770,7 +1770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5500f8b01096dac4797955c5c59ab359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance_detection: 5
+  distance_detection: 3
   vie: 2
   vitesse: 3
   itemAdrop: {fileID: 1372430738}
@@ -2736,37 +2736,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1273113152
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1273113153}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1273113153
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1273113152}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 41.49152, y: -1.198875, z: -4.4437304}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1308130096
 GameObject:
   m_ObjectHideFlags: 0
@@ -2794,7 +2763,7 @@ Transform:
   m_GameObject: {fileID: 1308130096}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.827, y: -0.05, z: 0}
+  m_LocalPosition: {x: -0.62, y: -0.061, z: 0}
   m_LocalScale: {x: 0.6330345, y: 0.33241412, z: 7.7199326}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2832,18 +2801,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.062277317, y: -0.07335681}
+  m_Offset: {x: -0.015323624, y: -0.07335687}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.12, y: 1.4}
-    newSize: {x: 1.12, y: 1.4}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1.28, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8558481, y: 2.052359}
+  m_Size: {x: 1.0110499, y: 2.052359}
   m_EdgeRadius: 0
 --- !u!212 &1308130099
 SpriteRenderer:
@@ -3410,7 +3379,7 @@ GameObject:
   m_Layer: 0
   m_Name: Respawn
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3500,7 +3469,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3508,7 +3477,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1474705285
@@ -4138,7 +4107,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0040534437, y: 0.00011071563}
+  m_Offset: {x: 0.059970856, y: -0.037166834}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -4149,7 +4118,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9536459, y: 1.1256983}
+  m_Size: {x: 0.52495575, y: 1.0511432}
   m_EdgeRadius: 0
 --- !u!114 &2085237219
 MonoBehaviour:
@@ -4413,4 +4382,3 @@ SceneRoots:
   - {fileID: 645472854}
   - {fileID: 693295750}
   - {fileID: 1474705285}
-  - {fileID: 1273113153}

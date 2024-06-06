@@ -31,7 +31,7 @@ public class Timer : MonoBehaviour
         else if (temps_restant <= 0)
         {
             temps_passant = false;
-            Destroy(playerObject);
+            playerObject.GetComponent<Joueur>().Respawn();
         }
     }
 
