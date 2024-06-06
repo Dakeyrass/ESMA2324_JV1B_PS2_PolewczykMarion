@@ -185,7 +185,6 @@ public class Joueur : MonoBehaviour
         //on tp le player et on reinitialise ses stats
         vie = 3;
         PerteVieUI();
-        
         vitesse = 10;
         timerobject.GetComponent<Timer>().Restart();
     }
