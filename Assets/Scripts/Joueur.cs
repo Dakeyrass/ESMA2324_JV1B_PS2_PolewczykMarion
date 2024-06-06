@@ -23,8 +23,12 @@ public class Joueur : MonoBehaviour
 
     //CONDITIONS
     private bool au_sol = true;
-    public GameObject timerobject;
     private bool ne_saute_pas;
+
+    //RECUPERATION
+    public GameObject timerobject;
+    private Menu_pause menu_pause;
+
 
     //pour SAFE ZONE
     private Timer timer_barre;
@@ -43,7 +47,7 @@ public class Joueur : MonoBehaviour
         anim = GetComponent<Animator>();
 
         timer_barre = FindObjectOfType<Timer>();
-
+        menu_pause = GetComponent<Menu_pause>();
 
         ne_saute_pas = true; 
         est_dessus = false;
@@ -125,6 +129,7 @@ public class Joueur : MonoBehaviour
             anim.SetTrigger("touché");
             vie -=1;
             PerteVieUI();
+            menu_pause.UpdateContam();
 
             if(vie<=0)
             {
@@ -197,6 +202,7 @@ public class Joueur : MonoBehaviour
         PerteVieUI();
         vitesse = 10;
         timerobject.GetComponent<Timer>().Restart();
+        menu_pause.Reset_Conta_Image();
     }
 }
 
