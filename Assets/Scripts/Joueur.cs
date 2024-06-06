@@ -13,9 +13,12 @@ public class Joueur : MonoBehaviour
     public Sprite[] vies;
     public Image UIvie;
 
+    private bool invincible;
+
     //COMPONENTS
     private Rigidbody2D rgbd;
     private Collider2D col;
+    private Animator anim;
 
     //CONDITIONS
     private bool au_sol = true;
@@ -34,9 +37,11 @@ public class Joueur : MonoBehaviour
         DontDestroyOnLoad(this);
         rgbd = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
+        anim = GetComponent<Animator>();
 
         timer_barre = FindObjectOfType<Timer>();
         est_dessus = false;
+        invincible = false; 
     }
 
     // Update is called once per frame
@@ -63,12 +68,14 @@ public class Joueur : MonoBehaviour
         //FLIP
         if (horizontal > 0)
         {
-            transform.localScale = new Vector3(-0.12f, 0.17f,1f);
+            transform.localScale = new Vector3(-1f, 1f,1f);
         }
         else if (horizontal < 0)
         {
-            transform.localScale = new Vector3(0.12f,0.17f,1f);
+            transform.localScale = new Vector3(1f,1f,1f);
         }
+
+        Debug.Log(invincible);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -98,10 +105,20 @@ public class Joueur : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Ennemi"))
+        if (other.CompareTag("Ennemi") && !invincible)
         {
+            anim.SetTrigger("touché");
             vie -=1;
             PerteVieUI();
+
+            if(vie<=0)
+            {
+                mort();
+            }
+            else
+            {
+                invincible = true;
+            }
         }
         
         if (other.CompareTag("Safe"))
@@ -118,6 +135,7 @@ public class Joueur : MonoBehaviour
             }
         }
         Debug.Log(vitesse);
+
 
     }
 
@@ -141,7 +159,12 @@ public class Joueur : MonoBehaviour
 
     public void mort()
     {
-        SceneManager.LoadSceneAsync(0);
+        gameObject.SetActive(false);
+    }
+
+    public void Iframe()
+    {
+        invincible = false; 
     }
 }
 
