@@ -9,7 +9,7 @@ public class Changement_scene : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("oui");
+        
         if (other.CompareTag("Player"))
         {
             SceneManager.LoadSceneAsync(scene_index);

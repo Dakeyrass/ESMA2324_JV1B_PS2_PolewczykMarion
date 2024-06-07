@@ -15,6 +15,7 @@ public class Joueur : MonoBehaviour
 
     private bool invincible;
     private Vector3 zone_respawn;
+    private float duree_invincibilite = 0.45f;
 
     //COMPONENTS
     private Rigidbody2D rgbd;
@@ -28,9 +29,7 @@ public class Joueur : MonoBehaviour
     //RECUPERATION
     public GameObject timerobject;
     private Menu_pause menu_pause;
-    private string ennemi_trigger = "blesse";
-
-
+    
     //pour SAFE ZONE
     private Timer timer_barre;
 
@@ -129,8 +128,6 @@ public class Joueur : MonoBehaviour
     {
         if (other.CompareTag("Ennemi") && !invincible)
         {
-            Animator ennemi_anim = other.GetComponent<Animator>();
-            ennemi_anim.SetTrigger(ennemi_trigger);
             anim.SetTrigger("touche");
             vie -=1;
             PerteVieUI();
@@ -142,7 +139,7 @@ public class Joueur : MonoBehaviour
             }
             else
             {
-                invincible = true;
+                StartCoroutine(DevientInvincible());
             }
         }
         
@@ -160,13 +157,20 @@ public class Joueur : MonoBehaviour
                 Respawn();
             }
         }
-        
+            Debug.Log(invincible);
 
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         timer_barre.ActiveTimer();
+    }
+
+    IEnumerator DevientInvincible()
+    {
+        invincible = true;
+        yield return new WaitForSeconds(duree_invincibilite);
+        invincible = false; 
     }
 
     private void PerteVieUI()
@@ -187,11 +191,6 @@ public class Joueur : MonoBehaviour
     public void mort()
     {
         gameObject.SetActive(false);
-    }
-
-    public void Iframe()
-    {
-        invincible = false; 
     }
 
     public void SetZoneRespawn(Vector3 nouv_z_respawn)

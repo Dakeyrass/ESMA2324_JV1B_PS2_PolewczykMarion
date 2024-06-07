@@ -21,11 +21,11 @@ public class Journal : MonoBehaviour
 
     private void Affiche_journal()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.Q))
         {
             journal.enabled = true; 
         }
-        else if (Input.GetKeyUp(KeyCode.R))
+        else if (Input.GetKeyUp(KeyCode.Q))
         {
             journal.enabled = false; 
         }

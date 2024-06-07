@@ -21,7 +21,7 @@ public class Attaque : MonoBehaviour
     {
         
         //attaque
-        if (Input.GetKeyDown(KeyCode.P) && a_arme)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && a_arme)
         {
             Attack();
             Debug.Log("J'attaque");

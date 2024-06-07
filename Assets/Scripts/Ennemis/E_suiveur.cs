@@ -12,6 +12,7 @@ public class E_suiveur : MonoBehaviour
     private Rigidbody2D rgbd;
     public Animator animator;
 
+    private bool peut_degats; 
     public GameObject itemAdrop;
 
     // Start is called before the first frame update
@@ -46,6 +47,8 @@ public class E_suiveur : MonoBehaviour
         }
     }
 
+
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Atk"))
@@ -59,7 +62,10 @@ public class E_suiveur : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
+        if (other.CompareTag("Player"))
+        {
+            animator.SetTrigger("blesse");
+        }
     }
 
-    
 }
