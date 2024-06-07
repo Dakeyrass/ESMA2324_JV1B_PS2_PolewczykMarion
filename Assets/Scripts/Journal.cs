@@ -21,7 +21,7 @@ public class Journal : MonoBehaviour
 
     private void Affiche_journal()
     {
-        if (Input.GetKey(KeyCode.R))
+        if (Input.GetKey(KeyCode.A))
         {
             journal.enabled = true; 
         }
