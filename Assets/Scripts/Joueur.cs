@@ -21,6 +21,8 @@ public class Joueur : MonoBehaviour
     private Rigidbody2D rgbd;
     private Collider2D col;
     private Animator anim;
+    public static Joueur instance;
+    //Introduction aux Singleton car je vais peter mon crane si ca continue.
 
     //CONDITIONS
     private bool au_sol = true;
@@ -38,10 +40,37 @@ public class Joueur : MonoBehaviour
     private Vector3 derniere_plat_pos;
     private bool est_dessus;
     
+    void Awake()
+    {
+      if(instance == null)
+      {
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+      }
+      else if(instance != this)
+      {
+        Destroy(gameObject);
+        return;
+      }
+
+      Transform joueurUI = transform.Find("UI");
+      Transform joueurPause = transform.Find("Pause");
+
+      if(joueurUI != null)
+      {
+        joueurUI.gameObject.SetActive(true);
+      }
+      if(joueurPause != null)
+      {
+        joueurPause.gameObject.SetActive(true);
+      }
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this);
+        
         rgbd = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
