@@ -8,17 +8,24 @@ public class Menu_pause : MonoBehaviour
     public Canvas pause;
     public Sprite[] stades;
     public Image UIstade;
+
     private Joueur joueur;
+    private GameObject player;
+
     public Text compteur_vitesse;
     private bool est_pause;
+
+
 
 
     // Start is called before the first frame update
     void Start()
     {
+        est_pause = false;
         pause.enabled = false;
         joueur = GetComponent<Joueur>();
-        est_pause = false;
+        player = GameObject.FindWithTag("Player");
+
         
     }
 
@@ -41,7 +48,7 @@ public class Menu_pause : MonoBehaviour
 
     private void MenuPause()
     {
-        Time.timeScale = 0;
+        Time.timeScale = 0f;
         pause.enabled = true;
         est_pause = true;
         compteur_vitesse.text = " Vitesse: " + joueur.vitesse.ToString();
@@ -61,7 +68,7 @@ public class Menu_pause : MonoBehaviour
     private void RetourNormal()
     {
         pause.enabled = false;
-        Time.timeScale = 1;
+        Time.timeScale = 1f;
         est_pause = false;
     }
 

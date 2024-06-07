@@ -28,6 +28,7 @@ public class Joueur : MonoBehaviour
     //RECUPERATION
     public GameObject timerobject;
     private Menu_pause menu_pause;
+    private string ennemi_trigger = "blesse";
 
 
     //pour SAFE ZONE
@@ -45,15 +46,17 @@ public class Joueur : MonoBehaviour
         rgbd = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
+        
 
         timer_barre = FindObjectOfType<Timer>();
         menu_pause = GetComponent<Menu_pause>();
+        
 
         ne_saute_pas = true; 
         est_dessus = false;
         invincible = false;
         zone_respawn = transform.position;
-        //on enregistre le respawn dès que le joueur spawn comme ça si il meurt avant le checkpoint il respawn qd mm
+        //on enregistre le respawn dï¿½s que le joueur spawn comme ï¿½a si il meurt avant le checkpoint il respawn qd mm
     }
 
     // Update is called once per frame
@@ -93,7 +96,7 @@ public class Joueur : MonoBehaviour
             transform.localScale = new Vector3(1f,1f,1f);
         }
 
-        Debug.Log(au_sol);
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -126,7 +129,9 @@ public class Joueur : MonoBehaviour
     {
         if (other.CompareTag("Ennemi") && !invincible)
         {
-            anim.SetTrigger("touché");
+            Animator ennemi_anim = other.GetComponent<Animator>();
+            ennemi_anim.SetTrigger(ennemi_trigger);
+            anim.SetTrigger("touche");
             vie -=1;
             PerteVieUI();
             menu_pause.UpdateContam();
@@ -198,7 +203,7 @@ public class Joueur : MonoBehaviour
     {
         transform.position = zone_respawn;
         //on tp le player et on reinitialise ses stats
-        vie = 3;
+        vie = 8;
         PerteVieUI();
         vitesse = 10;
         timerobject.GetComponent<Timer>().Restart();

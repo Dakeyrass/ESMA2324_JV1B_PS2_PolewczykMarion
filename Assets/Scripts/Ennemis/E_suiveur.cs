@@ -10,6 +10,7 @@ public class E_suiveur : MonoBehaviour
     private Transform player;
     //pour avoir la position du joueur en x y z
     private Rigidbody2D rgbd;
+    public Animator animator;
 
     public GameObject itemAdrop;
 
@@ -19,6 +20,7 @@ public class E_suiveur : MonoBehaviour
         GameObject playerObject = GameObject.FindWithTag("Player");
         player = playerObject.transform;
         rgbd = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -30,7 +32,9 @@ public class E_suiveur : MonoBehaviour
             Vector2 direction = (player.position - transform.position).normalized;
             //on normalized pour avoir un vecteur proportionnel a speed. 
             //En gros si on normalized pas, si l'ennemi est proche le vecteur sera court et donc *vitesse l'ennemi lent et inversement.
+            animator.SetBool("bouge", true);
             rgbd.velocity = direction * vitesse;
+            
             //pas besoin de time.deltatime car la vitesse de l'objet est deja en unite p secondes.
 
 
@@ -56,4 +60,6 @@ public class E_suiveur : MonoBehaviour
             }
         }
     }
+
+    
 }

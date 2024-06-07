@@ -26,11 +26,24 @@ public class E_mae : MonoBehaviour
         if (Vector3.Distance(transform.position, cible_pos) < 0.1f)
         //permet de calculer la distance entre la plateforme et la cible, le 0.1f est la marge d'erreur
         {
-            cible_pos = cible_pos == point1.position ? point2.position : point1.position;
+            if (cible_pos == point1.position)
+            {
+                cible_pos = point2.position;
+                transform.localScale = new Vector3(-1f, 1f,1f);
+            }
+            else
+            {
+                cible_pos = point1.position;
+                transform.localScale = new Vector3(1f, 1f,1f);
+            }
+            //cible_pos = cible_pos == point1.position ? point2.position : point1.position;
             //condition ? expression_if_true : expression_if_false
             //Permet d'ecrire de facon concise une condition if-else au lieu de faire if(cible_pos tatata) alors tititi sinon tututu
         }
+        
     }
+
+    
 
     void OnTriggerEnter2D(Collider2D other)
     {
