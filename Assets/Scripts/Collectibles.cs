@@ -31,7 +31,7 @@ public class Collectibles : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Porte" && collectible>=1)
+        if(collision.gameObject.tag == "Porte" && collectible>=2)
         {
             Destroy(collision.gameObject);
         }

@@ -54,7 +54,7 @@ public class E_suiveur : MonoBehaviour
         if(other.CompareTag("Atk"))
         {
             vie -=1;
-            Debug.Log(vie);
+        
 
             if (vie<=0)
             {

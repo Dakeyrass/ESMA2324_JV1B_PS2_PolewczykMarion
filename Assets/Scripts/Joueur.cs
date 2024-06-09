@@ -192,7 +192,11 @@ public class Joueur : MonoBehaviour
                 Respawn();
             }
         }
-            Debug.Log(invincible);
+        
+        if(other.CompareTag("Pillule"))
+        {
+            Destroy(other.gameObject);
+        }
 
     }
 
