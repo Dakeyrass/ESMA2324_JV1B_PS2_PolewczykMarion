@@ -10,15 +10,14 @@ public class Changement_scene : MonoBehaviour
     
     void Start()
     {
-        camera_joueur = FindObjectOfType<Camera>();
-        Camera camera_principale = Camera.main;
-        if (camera_principale != null)
+        GameObject joueur = GameObject.FindGameObjectWithTag("Player");
+        if (joueur!=null)
         {
-            camera_principale.gameObject.SetActive(false);
-        }
-        if (camera_joueur != null)
-        {
-            camera_joueur.gameObject.SetActive(true);
+            camera_joueur = joueur.GetComponentInChildren<Camera>();
+            if(camera_joueur!=null)
+            {
+                camera_joueur.gameObject.SetActive(true);
+            }
         }
     }
 
@@ -28,6 +27,12 @@ public class Changement_scene : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             SceneManager.LoadSceneAsync(scene_index);
+        }
+        if (other.CompareTag("Player") && scene_index !=1)
+        {
+            SceneManager.LoadSceneAsync(scene_index);
+            ParallaxCamera script = camera_joueur.GetComponent<ParallaxCamera>();
+            Destroy(script);
         }
     }
 }
