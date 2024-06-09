@@ -7,6 +7,7 @@ public class Changement_scene : MonoBehaviour
 {
     public int scene_index;
     private Camera camera_joueur;
+    
     void Start()
     {
         camera_joueur = FindObjectOfType<Camera>();

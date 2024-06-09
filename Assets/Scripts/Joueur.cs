@@ -134,12 +134,22 @@ public class Joueur : MonoBehaviour
             au_sol = true;
             ne_saute_pas = true; 
         }
+        if(collision.gameObject.tag == "Safe")
+        {
+            au_sol = true;
+            ne_saute_pas = true;
+            timer_barre.StopTimer();
+        }
         if(collision.gameObject.tag == "Plateforme")
         {
             plateforme_actuelle = collision.transform;
             derniere_plat_pos = plateforme_actuelle.transform.position;
             est_dessus = true;
             au_sol = true;
+        }
+        if(collision.gameObject.tag == "Vide")
+        {
+            Respawn();
         }
     }
 
@@ -171,11 +181,7 @@ public class Joueur : MonoBehaviour
                 StartCoroutine(DevientInvincible());
             }
         }
-        
-        if (other.CompareTag("Safe"))
-        {
-            timer_barre.StopTimer();
-        }
+    
 
         if (other.CompareTag("EnnemiVitesse"))
         {

@@ -14,6 +14,8 @@ TagManager:
   - Arme
   - Porte
   - Collectible
+  - Vide
+  - Pillule
   layers:
   - Default
   - TransparentFX
