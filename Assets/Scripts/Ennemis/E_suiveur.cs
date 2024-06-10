@@ -62,7 +62,10 @@ public class E_suiveur : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
-        if (other.CompareTag("Player"))
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
         {
             animator.SetTrigger("blesse");
         }

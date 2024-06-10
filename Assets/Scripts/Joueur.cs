@@ -129,6 +129,22 @@ public class Joueur : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.tag == "Ennemi" && !invincible)
+        {
+            anim.SetTrigger("touche");
+            vie -=1;
+            PerteVieUI();
+            menu_pause.UpdateContam();
+
+            if(vie<=0)
+            {
+                Respawn();
+            }
+            else
+            {
+                StartCoroutine(DevientInvincible());
+            }
+        }
         if(collision.gameObject.tag == "Sol")
         {
             au_sol = true;
@@ -165,22 +181,7 @@ public class Joueur : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Ennemi") && !invincible)
-        {
-            anim.SetTrigger("touche");
-            vie -=1;
-            PerteVieUI();
-            menu_pause.UpdateContam();
-
-            if(vie<=0)
-            {
-                Respawn();
-            }
-            else
-            {
-                StartCoroutine(DevientInvincible());
-            }
-        }
+        
     
 
         if (other.CompareTag("EnnemiVitesse"))

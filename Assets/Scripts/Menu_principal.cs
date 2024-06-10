@@ -20,6 +20,21 @@ public class Menu_principal : MonoBehaviour
     public void Menu()
     {
         SceneManager.LoadSceneAsync(0);
-        
+    }
+    public void Niveau1()
+    {
+        SceneManager.LoadSceneAsync(1);
+    }
+    public void Niveau2()
+    {
+        SceneManager.LoadSceneAsync(2);
+    }
+    public void Niveau3()
+    {
+        SceneManager.LoadSceneAsync(3);
+    }
+    public void SceneRemerciements()
+    {
+        SceneManager.LoadSceneAsync(4);
     }
 }
